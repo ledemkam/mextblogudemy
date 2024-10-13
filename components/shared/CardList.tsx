@@ -1,7 +1,7 @@
 import {
   Card,
-  CardContent,
   CardFooter,
+  CardHeader,
   CardTitle,
 } from "@/components/ui/card"
 import Image from "next/image"
@@ -10,30 +10,33 @@ import { Eye,MessageCircle} from "lucide-react"
 import { Post } from "@/lib/types";
 
 type CardListProps = {
- items: Post[]
+ post: Post
 }
 
 
-const CardList = ({items}:CardListProps) => {
+const CardList = ({post}:CardListProps) => {
   return (
-    <Card className="w-[350px]">
-      <CardContent>
-        <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
-                  <Image
-                    alt={items[0].title}
-                    src={items[0].image}
-                    className="h-full w-full object-cover object-center"
-                    width={100}
-                    height={200}
-                  />
-        </div>
-      </CardContent>
-      <CardTitle className="px-6 font-thin">{items[0].title}</CardTitle>
+    <Card className="flex flex-col justify-between rounded-lg border-2">
+      <CardHeader>
+         <div className="aspect-square relative">
+                    <Image
+                      alt={post.title}
+                      src={"/img/sql.jpg"}
+                      className="h-full w-full object-cover object-center aspect-square transition-all duration-300 hover:scale-110"
+                      fill
+                    />
+         </div>
+             
+        </CardHeader>
+      
+      <CardTitle className="px-6 font-thin text-lg">{post.title}</CardTitle>
       <CardFooter className="flex justify-between mt-7">
-        <Badge>{items[0].category}</Badge>
+        <Badge variant="outline">
+            {post.category}
+            </Badge>
         <div className="flex gap-2">
-        <MessageCircle /> {items[0].nbComments}
-        <Eye/> {items[0].nbViews}
+        <MessageCircle /> {post.nbComments}
+        <Eye/> {post.nbViews}
         </div>
       </CardFooter>
     </Card>

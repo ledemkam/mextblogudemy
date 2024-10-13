@@ -1,7 +1,8 @@
 import PageContainer from "@/components/layout/PageContainer";
-import CategoriesList from "@/components/shared/CategoriesList";
 import CategoriesSection from "@/components/shared/CategoriesSection";
 import HeroSection from "@/components/shared/HeroSection";
+import PostsList from "@/components/shared/PostsList";
+import { Posts } from "@/lib/posts";
 
 
 export default function Home() {
@@ -9,7 +10,7 @@ export default function Home() {
     <PageContainer>
       <HeroSection/>
       <CategoriesSection/>
-      <CategoriesList/>
+      <PostsList items={Posts}/>
     </PageContainer>
   )
 }
