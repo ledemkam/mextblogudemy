@@ -2,6 +2,7 @@ import Navigation from "./Navigation";
 import PageContainer from "./PageContainer";
 import ButtonAuth from "../shared/ButtonAuth";
 import ResponsiveMenu from "../shared/ResponsiveMenu";
+import ButtonThemes from "../shared/ButtonTheme";
 const Header = () => {
   return (
     <header className="p-4 border-b">
@@ -14,8 +15,9 @@ const Header = () => {
           </h1>
         </div>
         <Navigation />
-
+        
         <div className="flex items-center gap-3">
+          <ButtonThemes/>
           <ButtonAuth/>
         </div>
         </div>
