@@ -1,21 +1,15 @@
-"use client"
-import { Button } from "@/components/ui/button";
-import { Eye } from "lucide-react";
-import { useRouter } from "next/navigation";
+import PageContainer from "@/components/layout/PageContainer";
+import CategoriesList from "@/components/shared/CategoriesList";
+import CategoriesSection from "@/components/shared/CategoriesSection";
+import HeroSection from "@/components/shared/HeroSection";
+
 
 export default function Home() {
-      const router = useRouter();
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-       <Button variant="outline"
-        onClick={() => router.push("/login")}>       
-        Login
-       </Button>
-       <Button variant="outline"
-        onClick={() => router.push("/categories/react")}>
-        <Eye size={24}/>
-        React
-       </Button>
-    </main>
+    <PageContainer>
+      <HeroSection/>
+      <CategoriesSection/>
+      <CategoriesList/>
+    </PageContainer>
   )
 }

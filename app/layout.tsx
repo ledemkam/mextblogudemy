@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 import Header from "@/components/layout/Header";
-import { ThemeProvider } from "@/components/shared/theme-provider";
+import { Providers } from "./Providers";
 import Footer from "@/components/layout/Footer";
 
 const geistSans = localFont({
@@ -32,7 +32,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <Providers>
           <div className="flex flex-col justify-between min-h-screen">
              <Header />
              <div className="flex-grow">
@@ -40,7 +40,7 @@ export default function RootLayout({
              </div>
              <Footer />                  
           </div>
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );
