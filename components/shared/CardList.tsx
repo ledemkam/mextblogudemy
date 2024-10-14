@@ -38,7 +38,7 @@ const CardList = ({post}:CardListProps) => {
       </CardTitle>
       <CardFooter className="flex justify-between mt-7">
         <Badge variant="outline">
-            category
+           {post.catslug}
             </Badge>
         <div className="flex gap-2">
         <MessageCircle /> {post.nbComments}

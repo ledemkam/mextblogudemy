@@ -12,12 +12,12 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-import { Categories } from "@/lib/contants"
-import { ICategories } from "@/lib/types"
 
+import { useGetAllCategories } from "@/lib/query"
 
 
 export default function Navigation() {
+  const {data:categories}= useGetAllCategories()
 
 
   return (
@@ -27,10 +27,10 @@ export default function Navigation() {
           <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-             {Categories.map((category : ICategories) => (
+             {categories?.map((category) => (
               <ListItem
                 key={category.id}
-                title={category.name}
+                title={category.title}
                 href={`/categories/${category.slug}`}
                 />
              ))}

@@ -1,7 +1,14 @@
-import { Categories } from "@/lib/contants"
+import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 
 
+
 export const GET = async () => {
-  return NextResponse.json(Categories,{status:200});
+  try {
+    const categories = await db.category.findMany()
+    return NextResponse.json(categories,{status:200});
+  } catch (error) {
+    console.log(error)
+    return NextResponse.json({ message:"could not fetch category" }, { status: 500 })
+  }
 }

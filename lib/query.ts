@@ -1,6 +1,8 @@
+"use client"
 //usegetPosts
 import { useQuery } from '@tanstack/react-query';
 import { getAllPosts, getPostBySlug } from './api';
+import { getAllCategories, getCategoryBySlug } from './api';
 
 export const useGetOnePost = (slug:string) => {
   return useQuery({
@@ -14,5 +16,22 @@ export const useGetAllPosts = () => {
   return useQuery({
     queryKey: ['posts'],
     queryFn: async () => await getAllPosts(),
+  })
+}
+
+//usegetCategories
+
+export const useGetOneCategory = (slug:string) => {
+  return useQuery({
+    queryKey: ['categories',slug],
+    queryFn: async () => await getCategoryBySlug(slug),
+    enabled: !!slug
+  })
+}
+
+export const useGetAllCategories = () => {
+  return useQuery({
+    queryKey: ['categories'],
+    queryFn: async () => await getAllCategories(),
   })
 }

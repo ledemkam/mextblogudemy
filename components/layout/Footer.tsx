@@ -1,10 +1,14 @@
-import { Categories } from "@/lib/contants"
-import { ICategories } from "@/lib/types"
+"use client"
 import Link from "next/link"
 import PageContainer from "./PageContainer"
 import { Button } from "../ui/button"
+import { useGetAllCategories } from "@/lib/query"
+
+
+
 
 const Footer = () => {
+  const {data:categories}= useGetAllCategories()
   return (
     <footer className="border-t p-4">
       <PageContainer>
@@ -13,11 +17,11 @@ const Footer = () => {
             DevBlog
         </h1>
         <div className="flex flex-col gap-2 md:flex-row">
-          {Categories.map((category : ICategories) =>(
+          {categories?.map((category ) =>(
               <div key={category.id}>
                 <Link href={`/category/${category.id}`}>
                 <Button variant="ghost">
-                {category.name}
+                {category.title}
                 </Button>
                 </Link>
               </div>

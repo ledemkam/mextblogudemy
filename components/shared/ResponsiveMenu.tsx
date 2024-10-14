@@ -1,4 +1,4 @@
-
+"use client"
 import {
   Sheet,
   SheetContent,
@@ -7,10 +7,11 @@ import {
 import { Menu } from "lucide-react"
 import Link from "next/link"
 import { Button } from "../ui/button"
-import { Categories } from "@/lib/contants"
-import { ICategories } from "@/lib/types"
+
+import { useGetAllCategories } from "@/lib/query"
 
 const ResponsiveMenu = () => {
+  const {data:categories}= useGetAllCategories()
   return (
     <Sheet>
     <SheetTrigger >
@@ -23,9 +24,9 @@ const ResponsiveMenu = () => {
            </Link>
 
            <p>Categories</p>
-           {Categories.map((category: ICategories) => (
+           {categories?.map((category) => (
               <Link key={category.id} href={`/category/${category.slug}`} className="block px-2 py-2 text-lg">
-                <Button variant="ghost">{category.name}</Button>
+                <Button variant="ghost">{category.slug}</Button>
               </Link>
            ))}
          </div>

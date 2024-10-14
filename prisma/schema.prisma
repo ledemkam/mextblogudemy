@@ -22,4 +22,14 @@ model Post {
   image     String?
   view     Int      @default(0)
   nbComments Int    @default(0)
+  catslug   String
+  category  Category @relation(fields: [catslug], references: [slug])
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  image     String
+  title     String
+  slug      String   @unique
+  posts     Post[]
 }
