@@ -1,3 +1,6 @@
+import PageContainer from "@/components/layout/PageContainer";
+import PostsList from "@/components/shared/PostsList";
+import { Posts } from "@/lib/posts";
 
 type ParamsProgs = {
   params : {
@@ -8,6 +11,11 @@ type ParamsProgs = {
 export default function Categoriespage({params}: ParamsProgs) {
   const { id } = params;
   return (
-    <div>categoriespage {id}</div>
+    <PageContainer>
+      <div className="py-4 px-4">
+        <h1 className="text-4xl font-bold text-center mb-10">{id.replace("-","")}</h1>
+        <PostsList items={Posts}/>
+      </div>
+    </PageContainer>
   )
 }

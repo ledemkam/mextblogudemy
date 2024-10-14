@@ -8,6 +8,7 @@ import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { Eye,MessageCircle} from "lucide-react"
 import { Post } from "@/lib/types";
+import Link from "next/link";
 
 type CardListProps = {
  post: Post
@@ -29,7 +30,11 @@ const CardList = ({post}:CardListProps) => {
              
         </CardHeader>
       
-      <CardTitle className="px-6 font-thin text-lg">{post.title}</CardTitle>
+      <CardTitle className="px-6 font-thin text-lg">
+        <Link href={`/posts/${post.title}`}>
+        {post.title}
+        </Link>
+      </CardTitle>
       <CardFooter className="flex justify-between mt-7">
         <Badge variant="outline">
             {post.category}
