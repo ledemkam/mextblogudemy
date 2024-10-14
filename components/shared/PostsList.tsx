@@ -1,4 +1,4 @@
-import { Post } from "@/lib/types"
+import { Post } from "@prisma/client"
 import CardList from "./CardList"
 
 

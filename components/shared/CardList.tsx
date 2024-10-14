@@ -7,8 +7,9 @@ import {
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { Eye,MessageCircle} from "lucide-react"
-import { Post } from "@/lib/types";
+
 import Link from "next/link";
+import { Post } from "@prisma/client";
 
 type CardListProps = {
  post: Post
@@ -37,11 +38,11 @@ const CardList = ({post}:CardListProps) => {
       </CardTitle>
       <CardFooter className="flex justify-between mt-7">
         <Badge variant="outline">
-            {post.category}
+            category
             </Badge>
         <div className="flex gap-2">
         <MessageCircle /> {post.nbComments}
-        <Eye/> {post.nbViews}
+        <Eye/> {post.view}
         </div>
       </CardFooter>
     </Card>
