@@ -1,42 +1,70 @@
 import PageContainer from "@/components/layout/PageContainer";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Separator } from "@/components/ui/separator";
 import { Post } from "@/lib/types";
 import { Eye, MessageCircle } from "lucide-react";
 
-type ParamsProgs = {
-  params : {
-    id: string;
-  },
-  post ?: Post
-}
+// type ParamsProgs = {
+//   params : {
+//     id: string;
+//   },
+// }
 
-export default function page({params,post}: ParamsProgs) {
-  const { id } = params;
+export default function page() {
+  //const { id } = params;
+
+  const POST : Post ={
+      "id": 1,
+      "category": "React",
+      "title": "React State Management: Choosing the Right Solution",
+      "image": "/react-state-management.jpg",
+      "caption": "Explore different state management solutions in React and choose the one that fits your needs.",
+      "date": "2023-01-15",
+      "minutesToRead": 10,
+      "author": "John ReactDev",
+      "nbViews": 25,
+      "nbComments": 8,
+      "slug": "react-state-management-choosing-right-solution"
+    }
+
   return (
     <PageContainer>
-      <section className="bg-orange-500 rounded-md text-center py-16 max-h-screen mt-4">
+      <section style={{backgroundImage: "url(/img/sql.jpg)"}} className="rounded-lg aspect-square md:aspect-[2.4/1] text-center py-16 max-h-screen mt-4">
           <h1 className="font-bold text-xl text-center  bg-slate-400">
-            {id.replace("%","")}
+            {POST.title}
           </h1>
       </section>
-      <section className="flex justify-between py-4 border-b-2">
+      <section className="flex justify-between py-4">
             <div className="flex gap-4">
               <Avatar>
-                <AvatarImage src={post?.image} alt={post?.title} />
+                <AvatarImage src={POST.image} alt={POST.title} />
+                <AvatarFallback>{POST.author}</AvatarFallback>
               </Avatar>           
               <div>
-                <h4>{post?.author}</h4>
-                <p>Posted on </p>
+                <h4>{POST.author}</h4>
+                <p>Posted on {new Date(POST.date).toLocaleDateString()}</p>
               </div>
            </div>
             <div>
               <div className="flex gap-2">
-                <MessageCircle /> {post?.nbComments}
-                <Eye/> {post?.nbViews}
+                <div className="flex items-center gap-1">
+                 <MessageCircle />
+                  <p>
+                  {POST.nbComments}
+                  </p>
+                </div>
+                <div className="flex items-center gap-1">
+                    <Eye/>
+                  <p>
+                   {POST.nbViews}
+                  </p>
+                </div>
+
               </div>
             </div>
       </section>
-      <section className="p-6 border-b-2">
+      <Separator/>
+      <section className="p-6">
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque explicabo fugit corporis ea sed velit quos veniam consequatur ab.
            Eligendi sit, vel officia porro suscipit excepturi 
@@ -61,6 +89,8 @@ export default function page({params,post}: ParamsProgs) {
            laborum vitae? Officia exercitationem ratione enim amet aperiam temporibus, ea cupiditate.
         </p>
       </section> 
+
+      <Separator/>
       <section className="p-6">
         <h4 className="font-semibold text-2xl">Comments</h4>
         <p>Login to write a comment</p>
