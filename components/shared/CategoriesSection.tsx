@@ -5,6 +5,7 @@ import { useGetAllCategories } from "@/lib/query";
 
 const CategoriesSection = () => {
   const {data:categories}= useGetAllCategories()
+  
   return (
     <section className="md:flex md:justify-around  md:p-10 hidden">
       {categories?.map((category) => (

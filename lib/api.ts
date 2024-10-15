@@ -13,9 +13,9 @@ export const getPostBySlug = async (slug: string): Promise<Post> => {
   return await res.json();
 }
 
-export const getAllPosts = async (): Promise<Post[]> => {
+export const getAllPosts = async (slug:string): Promise<Post[]> => {
   await new Promise((resolve) => setTimeout(resolve, 1000));  
-  const res = await fetch("/api/posts");
+  const res = await fetch(`/api/posts?cat=${slug}`);
   if (!res.ok) {
     throw new Error("could not fetch posts");
   }

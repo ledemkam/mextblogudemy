@@ -12,10 +12,10 @@ export const useGetOnePost = (slug:string) => {
   })
 }
 
-export const useGetAllPosts = () => {
+export const useGetAllPosts = (slug:string | null = null) => {
   return useQuery({
     queryKey: ['posts'],
-    queryFn: async () => await getAllPosts(),
+    queryFn: async () => await getAllPosts(slug || ""),
   })
 }
 
