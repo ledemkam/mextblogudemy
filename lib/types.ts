@@ -1,8 +1,8 @@
 export type ICategories = {
-  id: number,
-  name: string,
-  slug: string
-}
+  id: number;
+  title: string;
+  slug: string;
+};
 
 export type Post = {
   id: number;

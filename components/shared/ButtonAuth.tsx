@@ -14,6 +14,8 @@ import {
   AvatarImage,
 } from "@/components/ui/avatar"
 
+
+
 const ButtonAuth = () => {
   const {data:session, status} = useSession();
   console.log(session)
